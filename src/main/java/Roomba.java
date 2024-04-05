@@ -18,7 +18,7 @@ public class Roomba extends Robot
 
         while (true) {
             // Move along the wall
-            ahead(100);
+            ahead(1000);
             turnRight(90);
         }
     }
@@ -30,6 +30,8 @@ public class Roomba extends Robot
     
     public void onScannedRobot(ScannedRobotEvent e) {
         // When a robot is detected, turn towards it and shoot
-        turnGunRight(getHeading() - getGunHeading() + e.getBearing());
-        fire(1); // Adjust fire power as needed
+	if (e.getDistance() < 50) {
+        	turnGunRight(getHeading() - getGunHeading() + e.getBearing());
+        	fire(2); // Adjust fire power as needed
+	}
     }
