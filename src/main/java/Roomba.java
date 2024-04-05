@@ -28,7 +28,7 @@ public class Roomba extends Robot
 	/**
 	 * onScannedRobot: What to do when you see another robot
 	 */
- public void onScannedRobot(ScannedRobotEvent e) {
+     public void onScannedRobot(ScannedRobotEvent e) {
 
         double angleToEnemy = getHeading() + e.getBearing();
         double enemyX = getX() + e.getDistance() * Math.sin(Math.toRadians(angleToEnemy));
@@ -41,7 +41,7 @@ public class Roomba extends Robot
         turnGunRight(getHeading() - getGunHeading() + angleToEnemy);
         
         fire(1);
-    }}
+    }
 
 	/**
 	 * onHitByBullet: What to do when you're hit by a bullet
