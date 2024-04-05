@@ -30,8 +30,6 @@ public class Roomba extends Robot
      public void onScannedRobot(ScannedRobotEvent e) {
 
         double angleToEnemy = getHeading() + e.getBearing();
-        double enemyX = getX() + e.getDistance() * Math.sin(Math.toRadians(angleToEnemy));
-        double enemyY = getY() + e.getDistance() * Math.cos(Math.toRadians(angleToEnemy));
 
         turnRight(e.getBearing());
         
