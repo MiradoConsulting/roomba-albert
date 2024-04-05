@@ -8,55 +8,28 @@ import robocode.*;
  */
 public class Roomba extends Robot
 {
-	/**
-	 * run: Roomba's default behavior
-	 */
-	public void run() {
+
+ public void run() {
 		setBodyColor(java.awt.Color.black);
         setGunColor(java.awt.Color.red);
         setRadarColor(java.awt.Color.red);
         setBulletColor(java.awt.Color.yellow);
         setScanColor(java.awt.Color.red);
 
-		// Robot main loop
-		while(true) {
-			turnRadarRight(360);
-		}
-	}
-
-	/**
-	 * onScannedRobot: What to do when you see another robot
-	 */
-     public void onScannedRobot(ScannedRobotEvent e) {
-
-	if (e.getName() == "LuckyBot") {
-
-
-        double angleToEnemy = getHeading() + e.getBearing();
-
-        turnRight(e.getBearing());
-        
-        ahead(e.getDistance() / 2);
-        
-        turnGunRight(getHeading() - getGunHeading() + angleToEnemy);
-        
-        fire(1);
-	}
+        while (true) {
+            // Move along the wall
+            ahead(100);
+            turnRight(90);
+        }
     }
-
-	/**
-	 * onHitByBullet: What to do when you're hit by a bullet
-	 */
-	public void onHitByBullet(HitByBulletEvent e) {
-		// Replace the next line with any behavior you would like
-		back(30);
-	}
-	
-	/**
-	 * onHitWall: What to do when you hit a wall
-	 */
-	public void onHitWall(HitWallEvent e) {
-		// Replace the next line with any behavior you would like
-		back(30);
-	}	
-}
+    
+    public void onHitWall(HitWallEvent e) {
+        // If hit a wall, turn left 90 degrees
+        turnLeft(90);
+    }
+    
+    public void onScannedRobot(ScannedRobotEvent e) {
+        // When a robot is detected, turn towards it and shoot
+        turnGunRight(getHeading() - getGunHeading() + e.getBearing());
+        fire(1); // Adjust fire power as needed
+    }
