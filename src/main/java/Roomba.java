@@ -16,7 +16,7 @@ public class Roomba extends Robot
         setBulletColor(java.awt.Color.yellow);
         setScanColor(java.awt.Color.red);
 
-	goCorner()
+	goCorner();
         while (true) {
             
         }
