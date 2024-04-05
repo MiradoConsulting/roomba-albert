@@ -16,12 +16,23 @@ public class Roomba extends Robot
         setBulletColor(java.awt.Color.yellow);
         setScanColor(java.awt.Color.red);
 
+	goCorner()
         while (true) {
-            // Move along the wall
-            ahead(5000);
-            turnRight(90);
+            
         }
     }
+
+public void goCorner() {
+		turnRight(normalRelativeAngleDegrees(0 - getHeading()));
+		// Move to that wall
+		ahead(5000);
+		// Turn to face the corner
+		turnLeft(90);
+		// Move to the corner
+		ahead(5000);
+		// Turn gun to starting point
+		turnGunLeft(90);
+	}
     
     public void onHitWall(HitWallEvent e) {
         // If hit a wall, turn left 90 degrees
