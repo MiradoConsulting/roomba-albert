@@ -1,6 +1,7 @@
 import robocode.*;
+import robocode.ScannedRobotEvent;
 //import java.awt.Color;
-
+import static robocode.util.Utils.normalRelativeAngleDegrees;
 // API help : http://robocode.sourceforge.net/docs/robocode/robocode/Robot.html
 
 /**
@@ -22,7 +23,7 @@ public class Roomba extends Robot
         }
     }
 
-public void goCorner() {
+	public void goCorner() {
 		turnRight(normalRelativeAngleDegrees(0 - getHeading()));
 		// Move to that wall
 		ahead(5000);
@@ -46,3 +47,4 @@ public void goCorner() {
         	fire(2); // Adjust fire power as needed
 	}
     }
+}
