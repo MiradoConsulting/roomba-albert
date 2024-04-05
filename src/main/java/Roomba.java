@@ -28,16 +28,20 @@ public class Roomba extends Robot
 	 * onScannedRobot: What to do when you see another robot
 	 */
      public void onScannedRobot(ScannedRobotEvent e) {
+	if (e.getName() == "LuckyBot") {
+        	double bearing = e.getBearing();
+        	double distance = e.getDistance();
+        
+        	turnRight(bearing);
+        
+        	ahead(distance / 2);
+        
+        	double radarTurn = getHeadingRadians() + e.getBearingRadians() - getRadarHeadingRadians();
+        	setTurnRadarRightRadians(2.0 * Math.PI * Utils.normalRelativeAngle(radarTurn));
+        
+        	fire(1); 
 
-        double angleToEnemy = getHeading() + e.getBearing();
-
-        turnRight(e.getBearing());
-        
-        ahead(e.getDistance() / 2);
-        
-        turnGunRight(getHeading() - getGunHeading() + angleToEnemy);
-        
-        fire(1);
+	}
     }
 
 	/**
