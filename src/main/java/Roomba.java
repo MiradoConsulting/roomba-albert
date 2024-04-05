@@ -1,4 +1,3 @@
-package Roomba;
 import robocode.*;
 //import java.awt.Color;
 
