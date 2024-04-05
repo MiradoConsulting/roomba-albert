@@ -18,7 +18,7 @@ public class Roomba extends Robot
 
         while (true) {
             // Move along the wall
-            ahead(1000);
+            ahead(5000);
             turnRight(90);
         }
     }
