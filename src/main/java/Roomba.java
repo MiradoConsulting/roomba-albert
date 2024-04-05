@@ -19,7 +19,7 @@ public class Roomba extends Robot
 
 	goCorner();
         while (true) {
-            
+            goCorner();
         }
     }
 
